@@ -1,0 +1,319 @@
+/* PAGE WRAPPER — matches TMDB exact layout width */
+.movies-layout {
+  display: flex;
+  justify-content: center;
+  width: 100%;
+  padding: 30px 40px;
+  background: #ffffff;
+}
+
+/* Center content wrapper (TMDB = 1300px width) */
+.movies-layout {
+  max-width: 1300px;
+  margin: 0 auto;
+  gap: 40px;
+}
+
+/* ---------------------------------------------
+   FILTER SIDEBAR (TMDB accurate)
+---------------------------------------------- */
+.filters-sidebar {
+  width: 300px;                     /* TMDB width */
+  background: #ffffff;
+  padding: 20px;
+  border: 1px solid #d7d7d7;        /* TMDB light gray border */
+  border-radius: 8px;
+  height: fit-content;
+}
+
+.filters-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
+}
+
+.filter-box {
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-box label {
+  margin-bottom: 6px;
+  font-size: 14px;
+  color: #333333;
+}
+
+.filter-box select,
+.filter-box input {
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #c7c7c7;
+  background: #ffffff;
+  color: #222222;
+  font-size: 14px;
+}
+
+/* ---------------------------------------------
+   MOVIES PAGE (RIGHT SIDE)
+---------------------------------------------- */
+.movies-page {
+  flex: 1;
+  max-width: 900px;                 /* Exactly TMDB movie-grid width */
+}
+
+.movies-title {
+  font-size: 26px;
+  font-weight: 700;
+  margin-bottom: 20px;
+  color: #000000;
+}
+
+/* ---------------------------------------------
+   MOVIES GRID — TMDB accurate
+---------------------------------------------- */
+.movies-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr); /* 5 per row */
+  gap: 24px;                              /* TMDB spacing */
+}
+/* ===== Global Styles Above ===== */
+
+/* ===== Responsive Styles ===== */
+
+
+.movie-card {
+  background: #ffffff;
+  border-radius: 8px;
+  overflow: hidden;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.movie-card:hover {
+  transform: translateY(-4px);           /* TMDB hover effect */
+  box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+.poster-wrapper {
+  position: relative;
+}
+
+.movie-poster {
+  width: 100%;
+  height: 260px;
+  object-fit: cover;
+}
+
+.movie-info {
+  padding: 12px;
+}
+
+.movie-info h3 {
+  font-size: 16px;
+  margin: 0;
+  font-weight: 700;
+  color: #000000;
+}
+
+.movie-date {
+  font-size: 14px;
+  margin-top: 4px;
+  color: #666666;
+}
+
+/* ---------------------------------------------
+   RATING BUBBLE — EXACT TMDB DESIGN
+---------------------------------------------- */
+.movie-rating {
+  position: absolute;
+  bottom: -20px;
+  left: 10px;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: #081c22;
+  color: #ffffff;
+  font-weight: 700;
+  font-size: 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 3px solid;    /* color set dynamically */
+}
+
+/* ---------------------------------------------
+   LOAD MORE BUTTON
+---------------------------------------------- */
+.load-more-btn {
+  margin: 40px auto;
+  display: block;
+  padding: 12px 25px;
+  font-size: 16px;
+  background: #01b4e4;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  transition: 0.2s;
+}
+
+.load-more-btn:hover {
+  background: #0399c7;
+}
+.back-to-top-btn {
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+  width: 45px;
+  height: 45px;
+  font-size: 22px;
+  border-radius: 50%;
+  border: none;
+  cursor: pointer;
+  background: #01b4e4;
+  color: white;
+  transition: 0.3s;
+  z-index: 500;
+}
+
+.back-to-top-btn:hover {
+  background: #009ac5;
+}
+
+.sidebar {
+  width: 250px;
+  min-height: 100vh;
+  background: #f4f4f4;
+  padding: 20px;
+  border-right: 1px solid #ddd;
+  position: relative;
+  transition: width 0.3s ease;
+}
+
+.sidebar.closed {
+  width: 40px;
+  padding: 20px 5px;
+}
+
+
+
+.sidebar-content {
+  opacity: 1;
+  transition: opacity 0.2s ease;
+}
+
+.sidebar.closed .sidebar-content {
+  opacity: 0;
+  pointer-events: none;
+}
+
+.sidebar-title {
+  margin-bottom: 15px;
+  font-weight: bold;
+}
+
+.filter-section {
+  margin-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+}
+
+.filter-section label {
+  margin-bottom: 5px;
+}
+
+.filter-section input,
+.filter-section select {
+  padding: 6px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+}
+
+.search-btn,
+.reset-btn {
+  width: 100%;
+  border: none;
+  padding: 12px;
+  cursor: pointer;
+  font-size: 16px;
+  border-radius: 6px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
+
+.search-btn {
+  background: #0a84ff;
+  color: white;
+}
+
+.search-btn:hover {
+  background: #006edc;
+}
+
+.reset-btn:hover {
+  background: #b71c1c;
+}
+.collapse-btn { position: absolute; top: 20px; right: -15px; width: 30px; height: 30px; border-radius: 50%; border: none; background: #fff; box-shadow: 0 0 5px #0003; cursor: pointer; font-size: 16px; }
+
+@media (max-width: 1100px) {
+  .movies-layout {
+    flex-direction: column;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .filters-sidebar,
+  .sidebar {
+    width: 100%;
+    max-width: 100%;    
+    height: auto;
+    margin-bottom: 20px;
+  }
+
+  .movies-grid {
+    grid-template-columns: repeat(1, 1fr);
+    gap: 15px;
+  }
+
+  .movie-card {
+   margin: 0 auto;
+    width: 50%;
+    height: auto;
+  }
+
+  .movies-title {
+    font-size: 22px;
+  }
+
+  .filters-title,
+  .sidebar-title {
+    font-size: 18px;
+  }
+
+  body {
+    font-size: 14px;
+  }
+
+  .collapse-btn {
+    top: 10px;
+    right: 10px;
+    width: 35px;
+    height: 35px;
+    font-size: 14px;
+  }
+   .movie-poster {
+    height: auto;
+    object-fit: cover;
+  }
+  
+    .load-more-btn {
+    width: 100%;
+  }
+
+}

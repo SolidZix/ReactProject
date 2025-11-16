@@ -1,0 +1,128 @@
+.details-page {
+  width: 100%;
+  color: #fff;
+  background-color: #0d0d0d;
+}
+
+.details-hero {
+  background-size: cover;
+  background-position: center top; /* horizontally center, align top */
+  padding: 80px 40px; /* add some top padding so the hero content isn’t flush against top */
+  display: flex;
+  justify-content: center;
+}
+
+.details-content {
+  display: flex;
+  gap: 40px;
+  max-width: 1200px;
+}
+
+.details-poster {
+  width: 320px;
+  height: auto;
+  border-radius: 12px;
+  box-shadow: 0 0 20px rgba(0,0,0,0.5);
+}
+
+.details-info {
+  max-width: 700px;
+}
+
+.details-title {
+  font-size: 38px;
+  font-weight: 700;
+  margin-bottom: 10px;
+}
+
+.details-title span {
+  color: #ccc;
+  font-weight: 400;
+}
+
+.details-meta {
+  color: #bbb;
+  margin-bottom: 20px;
+}
+
+.rating-section {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  margin-bottom: 20px;
+}
+
+.rating-circle {
+  width: 60px;
+  height: 60px;
+  border-radius: 50%;
+  background: #081c22;
+  border: 3px solid #21d07a;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-weight: 700;
+  font-size: 18px;
+}
+
+.rating-label {
+  font-size: 14px;
+  opacity: 0.7;
+}
+
+.tagline {
+  font-style: italic;
+  margin: 15px 0;
+  color: #ddd;
+}
+
+.overview {
+  line-height: 1.6;
+}
+
+.crew-list {
+  margin-top: 25px;
+  display: flex;
+  gap: 40px;
+  flex-wrap: wrap;
+}
+
+.crew-member {
+  display: flex;
+  flex-direction: column;
+}
+
+.crew-member span {
+  color: #ccc;
+  font-size: 14px;
+}
+
+.fade-in {
+  animation: fadeIn 0.6s ease-in-out;
+}
+
+@keyframes fadeIn {
+  from { opacity: 0; transform: translateY(10px); }
+  to { opacity: 1; transform: translateY(0); }
+}
+
+@media (max-width: 768px) {
+  .details-content {
+    flex-direction: column;
+    gap: 20px;
+    max-width: 100%;
+    align-items: center;  /* <-- center poster + info horizontally */
+  }
+
+  .details-info {
+    max-width: 100%;
+    text-align: center;   /* center text under poster */
+  }
+
+  .details-poster {
+    width: 100%;
+    max-width: 300px;
+    height: auto;
+    margin-bottom: 20px;
+  }
+}

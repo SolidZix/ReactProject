@@ -1,24 +1,37 @@
-import logo from './logo.svg';
 import './App.css';
+import Header from './components/Header';
+import Footer from './components/Footer';
+import Hero from './components/Hero';
+import Movies from './components/Movies';
+import TvShows from './components/TvShows';
+import MovieDetails from './components/MovieDetails';
+import TVShowDetails from './components/TVShowDetails';
+import { BrowserRouter, Route, Routes } from 'react-router-dom';
 
 function App() {
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <BrowserRouter>
+      <Header />
+
+      {/* This is the search bar you want on ALL pages */}
+
+      <Routes>
+        <Route path="/" element={<Hero />} />
+        <Route path="/movies" element={<Movies />} />
+        <Route path="/TvShows" element={<TvShows />} />
+
+        {/* DETAILS */}
+        <Route path="/movie/:id" element={<MovieDetails />} />
+        <Route path="/tv/:id" element={<TVShowDetails />} />
+
+
+
+
+        
+      </Routes>
+
+      <Footer />
+    </BrowserRouter>
   );
 }
 

@@ -1,0 +1,195 @@
+html {
+  overflow-y: scroll;
+  scrollbar-gutter: stable;
+}
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  margin: 0;
+  font-family: "Source Sans Pro", Arial, sans-serif;
+  font-size: 16px;
+  font-weight: 400;
+  -webkit-font-smoothing: antialiased;
+  background-color: #fff;
+  color: #fff;
+}
+
+.tmdb-nav {
+  background-color: #032541;
+  height: 64px;
+  display: flex;
+  align-items: center;
+  width: 100%;
+  position: fixed;
+  top: 0;
+  z-index: 10;
+  transition: top 0.3s ease-out;
+}
+
+.navbar-hidden {
+  top: -65px;
+}
+
+.tmdb-container {
+  max-width: 1300px;
+  min-width: 1020px;
+  width: 100%;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 40px;
+  box-sizing: border-box;
+}
+
+.nav-left {
+  display: flex;
+  align-items: center;
+  gap: 28px;
+}
+
+.logoH {
+  display: flex;
+  align-items: center;
+}
+
+.logoH img {
+  display: block;
+  width: 154px;
+  height: 20px;
+}
+
+.nav-links {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 50px;
+  margin: 0;
+  padding: 0;
+}
+
+.nav-links a {
+  text-decoration: none;
+  color: #fff;
+  font-weight: 600;
+  font-size: 0.95rem;
+  line-height: 1;
+  transition: opacity 0.2s ease;
+}
+
+.nav-right {
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  gap: 30px;
+}
+
+.icon-btn {
+  background: none;
+  border: none;
+  padding: 0;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+}
+
+.lang-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 1px solid #fff;
+  width: 32px;
+  height: 26px;
+  background: transparent;
+  color: #fff;
+  border-radius: 3px;
+  font-size: 0.9rem;
+  text-transform: uppercase;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.2s ease;
+}
+
+.lang-btn:hover {
+  background-color: rgba(255, 255, 255, 0.15);
+}
+
+.login,
+.join {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 0.95rem;
+  display: inline-flex;
+  align-items: center;
+  transition: opacity 0.2s ease;
+}
+
+.nav-links a:hover,
+.login:hover,
+.join:hover,
+.lang-btn:hover {
+  opacity: 0.8;
+}
+
+.tmdb-nav img {
+  display: block;
+}
+
+.tmdb-nav button,
+.tmdb-nav a {
+  display: inline-flex;
+  align-items: center;
+}
+
+@media (max-width: 968px) {
+  .tmdb-container {
+    min-width: unset;
+    padding: 0 20px;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+
+  .nav-left {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .nav-links {
+    gap: 15px;
+    flex-wrap: wrap;
+  }
+
+  .nav-right {
+    gap: 15px;
+  }
+
+  .logoH img {
+    width: 120px;
+    height: auto;
+  }
+
+  .nav-links a,
+  .login,
+  .join,
+  .lang-btn {
+    font-size: 0.85rem;
+  }
+
+  .icon-btn {
+    width: 30px;
+    height: 30px;
+  }
+
+  .lang-btn {
+    width: 28px;
+    height: 24px;
+    font-size: 0.8rem;
+  }
+}

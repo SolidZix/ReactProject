@@ -1,0 +1,32 @@
+
+.search-section {
+  position: relative;
+}
+
+.search-container {
+  box-sizing: border-box;
+  height: 44px;
+  width: 100%;
+  padding-top: 10px;
+  font-size: 1.1rem;
+  border: none;
+  outline: none;
+  background-color: #fff;
+  color: #000;
+  font-family: "Source Sans Pro", Arial, sans-serif;
+}
+
+input{
+  width: 100%;
+  font-size: 1.1rem;
+  border: none;
+  outline: none;
+  color: #000;
+  font-family: "Source Sans Pro", Arial, sans-serif;
+  opacity: 0.8;
+}
+.search-text {
+  display: flex;
+  align-items: center;
+  margin-left: 340px;
+}

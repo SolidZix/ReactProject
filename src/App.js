@@ -13,7 +13,6 @@ function App() {
     <BrowserRouter>
       <Header />
 
-      {/* This is the search bar you want on ALL pages */}
 
       <Routes>
         <Route path="/" element={<Hero />} />

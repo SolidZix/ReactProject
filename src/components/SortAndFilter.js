@@ -10,7 +10,6 @@ export default function SortAndFilter({ onChange, genres }) {
     rating: "",
   });
 
-  // Send filters to parent when changed
   useEffect(() => {
     onChange(filters);
   }, [filters]);

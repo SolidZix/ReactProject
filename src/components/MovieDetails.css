@@ -6,8 +6,8 @@
 
 .details-hero {
   background-size: cover;
-  background-position: center top; /* horizontally center, align top */
-  padding: 80px 40px; /* add some top padding so the hero content isn’t flush against top */
+  background-position: center top; 
+  padding: 80px 40px; 
   display: flex;
   justify-content: center;
 }
@@ -111,13 +111,12 @@
     flex-direction: column;
     gap: 20px;
     max-width: 100%;
-    align-items: center;  /* <-- center poster + info horizontally */
+    align-items: center; 
   }
 
   .details-info {
     max-width: 100%;
-    text-align: center;   /* center text under poster */
-  }
+    text-align: center;   }
 
   .details-poster {
     width: 100%;

@@ -193,3 +193,107 @@ body {
     font-size: 0.8rem;
   }
 }
+
+
+/* Hamburger icon for mobile */
+.hamburger {
+  display: none;
+  flex-direction: column;
+  cursor: pointer;
+  gap: 4px;
+}
+
+.hamburger .bar {
+  width: 25px;
+  height: 3px;
+  background: #fff;
+  border-radius: 2px;
+}
+
+.mobile-menu {
+  position: fixed;
+  top: 0;
+  left: -100%;
+  width: 260px;
+  height: 100%;
+  background: #032541;
+  z-index: 20;
+  display: flex;
+  flex-direction: column;
+  transition: left 0.3s ease;
+  padding-top: 20px;
+}
+
+.mobile-menu.open {
+  left: 0;
+}
+
+.mobile-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 0 20px 20px 20px;
+  border-bottom: 1px solid rgba(255,255,255,0.2);
+}
+
+.mobile-header .logoH img {
+  width: 120px;
+  height: auto;
+}
+
+.close-btn {
+  background: none;
+  border: none;
+  color: #fff;
+  font-size: 2rem;
+  cursor: pointer;
+}
+
+.mobile-content {
+  display: flex;
+  flex-direction: column;
+  padding: 20px;
+  gap: 15px;
+}
+
+.mobile-content a {
+  color: #fff;
+  text-decoration: none;
+  font-weight: 600;
+  font-size: 1rem;
+  transition: opacity 0.2s ease;
+}
+
+.mobile-content a:hover {
+  opacity: 0.8;
+}
+
+/* Icons inside mobile menu */
+.mobile-icons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-top: 20px;
+}
+
+/* Show hamburger on mobile and hide desktop nav */
+@media (max-width: 1000px) {
+  .hamburger {
+    display: flex;
+  }
+
+  .nav-links {
+    display: none;
+  }
+
+  .nav-left{
+    display: none;
+  }
+
+  .nav-right > img,
+  .nav-right > .login,
+  .nav-right > .join,
+  .nav-right > .lang-btn {
+    display: none;
+  }
+}

@@ -1,4 +1,4 @@
-import { useState, useEffect } from 'react'; // 👈 Import useState and useEffect
+import { useState, useEffect } from 'react';
 import './Header.css';
 import Search from './Search';
 import "./Search.css";
@@ -11,58 +11,44 @@ export default function Header() {
   const location = useLocation();
   const isHome = location.pathname === "/";
 
-  // State to manage the visibility class (initially visible)
   const [isVisible, setIsVisible] = useState(true);
-
-  // State to track the previous scroll position (start at 0)
   const [prevScrollPos, setPrevScrollPos] = useState(0);
+
+  // Mobile menu state
+  const [menuOpen, setMenuOpen] = useState(false);
 
   useEffect(() => {
     const handleScroll = () => {
       const currentScrollPos = window.pageYOffset;
-      const scrollThreshold = 70; // Only start hiding after scrolling 70px down
+      const scrollThreshold = 70;
 
       if (prevScrollPos > currentScrollPos) {
-        // Scrolling UP - Always show navbar
         setIsVisible(true);
       } else if (currentScrollPos > scrollThreshold) {
-        // Scrolling DOWN and past the threshold - Hide navbar
         setIsVisible(false);
       }
-      
-      // Update the previous scroll position
+
       setPrevScrollPos(currentScrollPos);
     };
 
-    // Attach the scroll event listener
     window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, [prevScrollPos]);
 
-    // Clean up the event listener when the component unmounts
-    return () => {
-      window.removeEventListener('scroll', handleScroll);
-    };
-  }, [prevScrollPos]); // Re-run effect when prevScrollPos changes to update the listener's closure
-
-  // Construct the class name based on the state
   const navClassName = `tmdb-nav ${!isVisible ? 'navbar-hidden' : ''}`;
 
   return (
     <>
-      {/* ⭐ Use the dynamic class name */}
-      <nav className={navClassName}> 
+      <nav className={navClassName}>
         <div className="tmdb-container">
 
           {/* Left */}
           <div className="nav-left">
             <Link to="/" className="logoH">
-              <img
-                src={img}
-                alt="The Movie Database (TMDB)"
-                width="154"
-                height="20"
-              />
+              <img src={img} alt="TMDB" />
             </Link>
 
+            {/* Desktop Links */}
             <ul className="nav-links">
               <Link to="/movies"><li>Movies</li></Link>
               <Link to="/TvShows"><li>TV Shows</li></Link>
@@ -78,12 +64,48 @@ export default function Header() {
             <a className="login">Login</a>
             <a className="join">Join TMDB</a>
             <img className="icon-btn" src={search} alt="Search" width="30" height="45" />
+
+            {/* Hamburger for mobile */}
+            <div 
+              className="hamburger" 
+              onClick={() => setMenuOpen(!menuOpen)}
+            >
+              <div className="bar"></div>
+              <div className="bar"></div>
+              <div className="bar"></div>
+            </div>
+          </div>
+        </div>
+
+        {/* Mobile Full Menu (slides from left) */}
+        <div className={`mobile-menu ${menuOpen ? 'open' : ''}`}>
+          <div className="mobile-header">
+            <Link to="/" onClick={() => setMenuOpen(false)} className="logoH">
+              <img src={img} alt="TMDB" />
+            </Link>
+            <button className="close-btn" onClick={() => setMenuOpen(false)}>×</button>
           </div>
 
+          <div className="mobile-content">
+            <Link to="/movies" onClick={() => setMenuOpen(false)}>Movies</Link>
+            <Link to="/TvShows" onClick={() => setMenuOpen(false)}>TV Shows</Link>
+            <Link to="/" onClick={() => setMenuOpen(false)}>People</Link>
+            <Link to="/" onClick={() => setMenuOpen(false)}>More</Link>
+
+            <div className="mobile-icons">
+              <img className="icon-btn" src={plus} alt="Add" width="24" height="24" />
+              <button className="lang-btn">EN</button>
+              <a className="login">Login</a>
+              <a className="join">Join TMDB</a>
+              <img className="icon-btn" src={search} alt="Search" width="30" height="45" />
+            </div>
+          </div>
         </div>
+
       </nav>
-<div style={{ height: '64px' }}></div>
-      {/* ⭐ Show only on home page */}
+
+      <div style={{ height: '64px' }}></div>
+
       {isHome && <Search />}
     </>
   );

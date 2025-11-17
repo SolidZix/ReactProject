@@ -1,4 +1,3 @@
-/* PAGE WRAPPER — matches TMDB exact layout width */
 .movies-layout {
   display: flex;
   justify-content: center;
@@ -7,21 +6,17 @@
   background: #ffffff;
 }
 
-/* Center content wrapper (TMDB = 1300px width) */
 .movies-layout {
   max-width: 1300px;
   margin: 0 auto;
   gap: 40px;
 }
 
-/* ---------------------------------------------
-   FILTER SIDEBAR (TMDB accurate)
----------------------------------------------- */
 .filters-sidebar {
-  width: 300px;                     /* TMDB width */
+  width: 300px;
   background: #ffffff;
   padding: 20px;
-  border: 1px solid #d7d7d7;        /* TMDB light gray border */
+  border: 1px solid #d7d7d7;
   border-radius: 8px;
   height: fit-content;
 }
@@ -60,12 +55,9 @@
   font-size: 14px;
 }
 
-/* ---------------------------------------------
-   MOVIES PAGE (RIGHT SIDE)
----------------------------------------------- */
 .movies-page {
   flex: 1;
-  max-width: 900px;                 /* Exactly TMDB movie-grid width */
+  max-width: 900px;
 }
 
 .movies-title {
@@ -75,18 +67,29 @@
   color: #000000;
 }
 
-/* ---------------------------------------------
-   MOVIES GRID — TMDB accurate
----------------------------------------------- */
+.hard-coded {
+  font-size: 1.1em;
+  font-weight: 600;
+  margin-bottom: 20px;
+  color: #000000;
+  padding:  80px;
+  position: relative;
+}
+.hard-coded::after {
+  content: "▼";
+  position: absolute;
+  font-size: 12px;
+  color: #555;
+  margin: 0 auto;
+  right: 30px;
+}
+
 .movies-grid {
   display: grid;
-  grid-template-columns: repeat(5, 1fr); /* 5 per row */
-  gap: 24px;                              /* TMDB spacing */
+  grid-template-columns: repeat(5, 1fr);
+  gap: 24px;
+  margin-top: 50px;
 }
-/* ===== Global Styles Above ===== */
-
-/* ===== Responsive Styles ===== */
-
 
 .movie-card {
   background: #ffffff;
@@ -96,7 +99,7 @@
 }
 
 .movie-card:hover {
-  transform: translateY(-4px);           /* TMDB hover effect */
+  transform: translateY(-4px);
   box-shadow: 0 4px 12px rgba(0,0,0,0.15);
 }
 
@@ -127,9 +130,6 @@
   color: #666666;
 }
 
-/* ---------------------------------------------
-   RATING BUBBLE — EXACT TMDB DESIGN
----------------------------------------------- */
 .movie-rating {
   position: absolute;
   bottom: -20px;
@@ -144,14 +144,37 @@
   display: flex;
   align-items: center;
   justify-content: center;
-  border: 3px solid;    /* color set dynamically */
+  border: 3px solid;
 }
 
-/* ---------------------------------------------
-   LOAD MORE BUTTON
----------------------------------------------- */
+.genre-chips {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.genre-chip {
+  padding: 6px 12px;
+  border: 1px solid #c7c7c7;
+  background: #fff;
+  border-radius: 20px;
+  cursor: pointer;
+  font-size: 14px;
+  transition: 0.2s;
+}
+
+.genre-chip:hover {
+  background: #e6e6e6;
+}
+
+.genre-chip.selected {
+  background: #01b4e4;
+  color: white;
+  border-color: #01b4e4;
+}
+
 .load-more-btn {
-  margin: 40px auto;
+  width: 100%;
   display: block;
   padding: 12px 25px;
   font-size: 16px;
@@ -197,11 +220,9 @@
 }
 
 .sidebar.closed {
-  width: 40px;
+  width: 1000px;
   padding: 20px 5px;
 }
-
-
 
 .sidebar-content {
   opacity: 1;
@@ -218,21 +239,59 @@
   font-weight: bold;
 }
 
-.filter-section {
-  margin-bottom: 20px;
+.dropdown-selected {
+  width: 100%;
+  height: 44px;
+  line-height: 24px;
+  background: #fff;
+  border: 1px solid #c7c7c7;
+  border-radius: 6px;
+  padding: 0 10px;
+  font-size: 14px;
+  color: #222;
+  cursor: pointer;
   display: flex;
-  flex-direction: column;
+  justify-content: space-between;
+  align-items: center;
+  box-sizing: border-box;
+  position: relative;
 }
 
-.filter-section label {
-  margin-bottom: 5px;
+.dropdown-selected::after {
+  content: "▼";
+  font-size: 12px;
+  color: #555;
+  margin-left: 10px;
+  display: flex;
+  align-items: center;
 }
 
-.filter-section input,
-.filter-section select {
-  padding: 6px;
-  border: 1px solid #ccc;
-  border-radius: 5px;
+.dropdown-options {
+  width: 100%;
+  background: #fff;
+  border: 1px solid #c7c7c7;
+  border-radius: 6px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  max-height: 200px;
+  overflow-y: auto;
+  z-index: 1000;
+  position: absolute;
+  left: 0;
+  top: 100%;
+  box-sizing: border-box;
+}
+
+.dropdown-options li {
+  padding: 10px;
+  cursor: pointer;
+  font-size: 14px;
+  color: #222;
+}
+
+.dropdown-options li:hover {
+  background: #e0e0e0;
 }
 
 .search-btn,
@@ -261,17 +320,28 @@
 }
 .collapse-btn { position: absolute; top: 20px; right: -15px; width: 30px; height: 30px; border-radius: 50%; border: none; background: #fff; box-shadow: 0 0 5px #0003; cursor: pointer; font-size: 16px; }
 
+.filters-sidebar select,
+.filters-sidebar input,
+.filters-sidebar .search-btn,
+.filters-sidebar .reset-btn {
+  width: 100%;
+  box-sizing: border-box;
+}
+
+.filters-sidebar {
+  overflow-x: hidden;
+}
+
 @media (max-width: 1100px) {
   .movies-layout {
     flex-direction: column;
-    padding: 20px;
-    gap: 20px;
+    padding: 10px;
   }
 
   .filters-sidebar,
   .sidebar {
     width: 100%;
-    max-width: 100%;    
+    max-width: 100%;
     height: auto;
     margin-bottom: 20px;
   }
@@ -279,6 +349,10 @@
   .movies-grid {
     grid-template-columns: repeat(1, 1fr);
     gap: 15px;
+  }
+  .movie-card:hover {
+    transform: translateY(-4px);
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
   }
 
   .movie-card {
@@ -311,9 +385,56 @@
     height: auto;
     object-fit: cover;
   }
-  
+
     .load-more-btn {
     width: 100%;
   }
 
+  .filters-sidebar {
+  width: 100%;
+  background: #ffffff;
+  padding: 20px;
+  border: 1px solid #d7d7d7;
+  border-radius: 8px;
+  height: fit-content;
+}
+
+.filters-title {
+  font-size: 20px;
+  font-weight: 700;
+  margin-bottom: 0;
+  color: #000000;
+}
+
+.filters-container {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.filter-box {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.filter-box label {
+  font-size: 14px;
+  color: #333333;
+}
+
+.filter-box select,
+.filter-box input {
+  width: 100%;
+  padding: 10px;
+  border-radius: 6px;
+  border: 1px solid #c7c7c7;
+  background: #ffffff;
+  color: #222222;
+  font-size: 14px;
+  height: 30px;
+}
+.dropdown-selected{
+  height: 30px;
+}
 }

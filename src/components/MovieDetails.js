@@ -37,9 +37,9 @@
       linear-gradient(to right, rgba(10,10,10,0.9), rgba(10,10,10,0.6)),
       url(${bg})
     `,
-    backgroundPosition: 'center top',  // <-- shift top
+    backgroundPosition: 'center top', 
     backgroundSize: 'cover',
-    paddingTop: '118px',                // add top padding
+    paddingTop: '118px',               
   }}
 >
 

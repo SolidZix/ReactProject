@@ -13,9 +13,9 @@ const Hero = () => {
         const data = await res.json();
 
         const randomMovie =
-          data.results[Math.floor(Math.random() * data.results.length)];
+          data.results[Math.floor(Math.random() * data.results.length)]; // length is the number of movies we got 
 
-        const url = `https://image.tmdb.org/t/p/original${randomMovie.backdrop_path}`;
+        const url = `https://image.tmdb.org/t/p/original${randomMovie.backdrop_path}`; //to get a valid full sized image
         setBgImage(url);
       } catch (error) {
         console.log(error);

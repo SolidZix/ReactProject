@@ -147,7 +147,7 @@ body {
   align-items: center;
 }
 
-@media (max-width: 968px) {
+@media (max-width: 768px) {
   .tmdb-container {
     min-width: unset;
     padding: 0 20px;
@@ -277,7 +277,7 @@ body {
 }
 
 /* Show hamburger on mobile and hide desktop nav */
-@media (max-width: 1000px) {
+@media (max-width: 768px) {
   .hamburger {
     display: flex;
   }

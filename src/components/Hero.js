@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import "./Hero.css"; // ← import the CSS file
+import "./Hero.css"; 
 
 const Hero = () => {
   const [bgImage, setBgImage] = useState("");

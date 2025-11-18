@@ -58,7 +58,7 @@
   text-decoration: underline;
 }
 
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .footer-content {
     flex-direction: column;
     gap: 20px;

@@ -30,7 +30,7 @@ input{
   align-items: center;
   margin-left: 340px;
 }
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   
     .search-text {
       margin-left: 0;

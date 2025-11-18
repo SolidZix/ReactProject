@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { Link } from "react-router-dom";
 import "./Movies.css";
 
-const Dropdown = ({ label, options, value, onChange }) => {
+const Dropdown = ({ label, options, value, onChange }) => { //for filtering
   const [isOpen, setIsOpen] = useState(false);
 
   const selectedLabel =
@@ -139,7 +139,7 @@ const Movies = () => {
         `https://api.themoviedb.org/3/genre/movie/list?api_key=${API_KEY}&language=en-US`
       );
       const data = await res.json();
-      setGenres(data.genres || []);
+      setGenres(data.genres || []); //store the genres in the state if there are any
     } catch (err) {
       console.log(err);
     }
@@ -147,7 +147,7 @@ const Movies = () => {
 
   useEffect(() => {
     const load = async () => {
-      await fetchMovies(1);
+      await fetchMovies(1); //to fetch only one page (20 movies)
       await fetchGenres();
       setLoading(false);
     };
@@ -159,49 +159,49 @@ const Movies = () => {
 
     const handleScroll = () => {
       const bottom =
-        window.innerHeight + window.scrollY >=
-        document.documentElement.scrollHeight - 200;
-      if (bottom) loadMore();
+        window.innerHeight + window.scrollY >= //Height of the visible part of the screen + How much the user has scrolled
+        document.documentElement.scrollHeight - 200; // Total height of the page
+      if (bottom) loadMore(); //get more movies
     };
 
-    window.addEventListener("scroll", handleScroll);
+    window.addEventListener("scroll", handleScroll); //run on every scroll (event for the window, runs on each scroll)
     return () => window.removeEventListener("scroll", handleScroll);
   }, [infiniteScrollEnabled, page]);
 
-  const getRatingColor = (rating) => {
+  const getRatingColor = (rating) => { //to get the color of the rating (circle)
     if (rating >= 70) return "#21d07a";
     if (rating >= 40) return "#d2d531";
     return "#db2360";
   };
 
-  const loadMore = async () => {
+  const loadMore = async () => { //to get more movies
     const next = page + 1;
     setPage(next);
     await fetchMovies(next);
   };
-  const handleSearch = () => {
+  const handleSearch = () => { //for filtering
     setPage(1);
     setMovies([]);
     fetchMovies(1, pendingFilters);
   };
 
-  const handleLoadMore = () => {
+  const handleLoadMore = () => { //nce we press load more, infinite movies will be loaded
     if (!infiniteScrollEnabled) setInfiniteScrollEnabled(true);
     loadMore();
   };
 
-  const applyFilters = (newFilters, baseMovies = movies) => {
+  const applyFilters = (newFilters, baseMovies = movies) => { //newFilters containing the selected filters by the user
     setFilters(newFilters);
 
-    let result = [...baseMovies];
+    let result = [...baseMovies]; // baseMovies --> all movies by defaullt
 
-    if (newFilters.genre !== "") {
+    if (newFilters.genre !== "") { //filters by genre
       result = result.filter((movie) =>
         movie.genre_ids.includes(Number(newFilters.genre))
       );
     }
 
-    if (newFilters.rating !== "") {
+    if (newFilters.rating !== "") { //filters by rating
       result = result.filter(
         (movie) => movie.vote_average * 10 >= Number(newFilters.rating)
       );
@@ -231,7 +231,7 @@ const Movies = () => {
     setFilteredMovies(result);
   };
 
-  const resetFilters = () => {
+  const resetFilters = () => { //to reset the filters (called by the reset button)
     const reset = { sortBy: "popularity", genre: "", year: "", rating: "" };
     setPendingFilters(reset);
     applyFilters(reset);
@@ -272,7 +272,7 @@ const Movies = () => {
           Where to Watch
         </h4>
         <div
-          className={`filters-sidebar ${sidebarOpen ? "open" : "closed"}`}
+          className={`filters-sidebar ${sidebarOpen ? "open" : "closed"}`}  // Side bar (filters)
           style={{ boxShadow: "2px 2px 4px rgba(0, 0, 0, 0.2)" }}
         >
           <button
@@ -364,7 +364,7 @@ const Movies = () => {
       {/* MOVIES GRID */}
       <div className="movies-page">
         <div className="movies-grid">
-          {filteredMovies.map((m) => (
+          {filteredMovies.map((m) => ( //filteredMovies is an array of movies
             <Link
               to={`/movie/${m.id}`}
               key={m.id}
@@ -374,14 +374,14 @@ const Movies = () => {
               <div className="poster-wrapper">
                 <img
                   className="movie-poster"
-                  src={`https://image.tmdb.org/t/p/w500${m.poster_path}`}
+                  src={`https://image.tmdb.org/t/p/w500${m.poster_path}`} // to get a valid full sized image, poster path is a relative path(from api)
                   alt={m.title}
                 />
                 <div
                   className="movie-rating"
                   style={{
                     borderColor: getRatingColor(
-                      Math.round(m.vote_average * 10)
+                      Math.round(m.vote_average * 10) // vote average also a relative path from api
                     ),
                   }}
                 >

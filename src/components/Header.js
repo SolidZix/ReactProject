@@ -8,8 +8,8 @@ import plus from '../assets/glyphicons-basic-371-plus-white-0bac34f16124808a12ea
 import { Link, useLocation } from "react-router-dom";
 
 export default function Header() {
-  const location = useLocation();
-  const isHome = location.pathname === "/";
+  const location = useLocation(); // Get the current location(path)
+  const isHome = location.pathname === "/"; // Check if the current path is the home page
 
   const [isVisible, setIsVisible] = useState(true);
   const [prevScrollPos, setPrevScrollPos] = useState(0);
@@ -17,14 +17,14 @@ export default function Header() {
   // Mobile menu state
   const [menuOpen, setMenuOpen] = useState(false);
 
-  useEffect(() => {
-    const handleScroll = () => {
-      const currentScrollPos = window.pageYOffset;
+  useEffect(() => {  //shows or hides the navbar depending on the scroll
+    const handleScroll = () => { //runs on every scroll
+      const currentScrollPos = window.pageYOffset; // get the current scroll position
       const scrollThreshold = 70;
 
-      if (prevScrollPos > currentScrollPos) {
+      if (prevScrollPos > currentScrollPos) { //the user is scrolling up
         setIsVisible(true);
-      } else if (currentScrollPos > scrollThreshold) {
+      } else if (currentScrollPos > scrollThreshold) { //the user is scrolling down
         setIsVisible(false);
       }
 
@@ -32,7 +32,7 @@ export default function Header() {
     };
 
     window.addEventListener('scroll', handleScroll);
-    return () => window.removeEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll); // cleanup
   }, [prevScrollPos]);
 
   const navClassName = `tmdb-nav ${!isVisible ? 'navbar-hidden' : ''}`;

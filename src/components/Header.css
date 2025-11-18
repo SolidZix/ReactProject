@@ -277,7 +277,7 @@ body {
 }
 
 /* Show hamburger on mobile and hide desktop nav */
-@media (max-width: 768px) {
+@media (max-width: 1000px) {
   .hamburger {
     display: flex;
   }
